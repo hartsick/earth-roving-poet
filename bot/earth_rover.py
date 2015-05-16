@@ -48,6 +48,7 @@ class EarthRover(object):
 
     @classmethod
     def get_status_url(cls, status):
+        print "URLS", status
         url = "http://twitter.com/{0}/status/{1}".format(cls.username, status['id_str'])
         if config.DEBUG:
             print url
@@ -57,7 +58,7 @@ class EarthRover(object):
 
 if __name__ == '__main__':
 
-    twitter = Twython(*config.twitter_cred)
+    twitter = Twython(*config.bot_cred)
     bot = EarthRover(twitter)
     status = bot.get_recent_statuses(5)[-1]
     bot.get_media_url(status)

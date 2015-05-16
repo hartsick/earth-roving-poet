@@ -1,6 +1,6 @@
 # coding: utf-8
 
-# Functions largely based on @INTERESTING_JPG's cvserver
+# Functions largely based on and/or borrwed from @INTERESTING_JPG's cvserver
 # https://github.com/cmyr/INTERESTING_JPG/blob/master/cvserver.py
 
 import requests

@@ -7,8 +7,4 @@ twitter_cred = [
     os.environ.get('EARTHROVER_ACCESS_TOKEN_SECRET')
 ]
 
-BOT_ID = 3196974433
-
 DEBUG = os.environ.get('TWEET_LOCAL', None)
-
-# BOT-SPECIFIC CONFIG

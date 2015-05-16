@@ -8,6 +8,10 @@ import bs4
 import re
 import config
 
+# TODO: Right now when debug is turned on and this file is run, the class still makes requests to the image-to-text server. Ideally, we'd like to test against a sample response instead, but the OOP refactor makes this difficult with only one debug setting.
+
+# TODO, part 2: Clean up this debugging and error handling logic
+
 class ImageToText(object):
     def __init__(self, image_url):
         self.raw_text = self.response_for_image(image_url)
@@ -81,7 +85,6 @@ class ImageToText(object):
             return tag_list.split()
         print("no tags found?")
         print(soup.prettify())
-
 
 
 

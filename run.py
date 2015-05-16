@@ -1,13 +1,15 @@
 from time import sleep
 from twython import Twython
 import config
-import bot
+from image_to_text import ImageToText
+import earth_rover as EarthRover
 
 def do_the_thing():
     twitter = Twython(*config.twitter_cred)
     text = "hello my future girlfriend"
 
-    rover_status = EarthRover.get_most_recent_status(twitter)
+    # rover_status = EarthRover.get_most_recent_status(twitter)
+    # response = ImageToText(rover_status.image_url).response_for_image()
 
 
     if config.DEBUG:

@@ -9,6 +9,6 @@ twitter_cred = [
 
 BOT_ID = 3196974433
 
-tweet_locally = os.environ.get('TWEET_LOCAL', None)
+DEBUG = os.environ.get('TWEET_LOCAL', None)
 
 # BOT-SPECIFIC CONFIG

@@ -1,20 +1,23 @@
-import logging
 from time import sleep
 from twython import Twython
-from config.common import twitter_cred, tweet_locally
+import config
+import bot
 
 def do_the_thing():
-
+    twitter = Twython(*config.twitter_cred)
     text = "hello my future girlfriend"
 
-    if tweet_locally:
+    rover_status = EarthRover.get_most_recent_status(twitter)
+
+
+    if config.DEBUG:
         print "LOCAL: Updated status with: '{0}'".format(text)
     else:
         try:
-            Twython(*twitter_cred).update_status(status=text)
+            twitter.update_status(status=text)
             print "REMOTE: Updated status with: '{0}'".format(text)
         except Exception as e:
-            logging.exception(e)
+            print(e)
 
 if __name__ == "__main__":
 

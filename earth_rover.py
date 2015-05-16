@@ -32,7 +32,7 @@ class EarthRover(object):
                 )
             except Exception as e:
                 print(e)
-                return
+                return None
 
         return tweets
 

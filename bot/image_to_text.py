@@ -36,7 +36,6 @@ class ImageToText(object):
                 print("read time out")
                 return
             text = r.text.strip()
-            print(r)
         if not len(text):
             print('no text in response. status: %d %s' % (r.status_code, r.reason))
             return None
@@ -62,7 +61,12 @@ class ImageToText(object):
         if next_sib:
             captions = next_sib.find_all('li')
             if captions:
-                return [c.text for c in captions]
+                # remove weird period at end
+                formatted_captions = []
+                for c in captions:
+                    cleaned = c.split('.')[0].strip()
+                    formatted_captions.append(cleaned)
+                return formatted_captions
         print("no captions found?")
         print(self.soup.prettify())
 

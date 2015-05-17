@@ -90,15 +90,10 @@ class ImageToText(object):
 
     def log_interesting_data(self):
         print "Gathering data..."
-        print "Nearest Neighbor:"
-        print self.nearest_neighbor()
-        print "Top caption:"
-        print self.top_caption()
-        print "Captions:"
-        print self.captions()
-        print "Tags:"
-        print self.tags()
-
+        print 'Nearest Neighbor: "{0}"'.format(self.nearest_neighbor())
+        print 'Top Caption: "{0}"'.format(self.top_caption())
+        print "Captions: {0}: ".format(self.captions())
+        print "Tags: {0}".format(self.tags())
 
 if __name__ == '__main__':
     test_img = 'https://s-media-cache-ak0.pinimg.com/236x/87/14/cb/8714cbbe006f5117a0cab2d42e65ec61.jpg'

@@ -16,4 +16,6 @@ christa_cred = [
 
 CHRISTA_ID = 24398192
 
+BOT_ID = 3196974433
+
 DEBUG = os.environ.get('TWEET_LOCAL', None)

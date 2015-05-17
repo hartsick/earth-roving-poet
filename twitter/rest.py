@@ -3,7 +3,7 @@ import time
 from twython import Twython
 import config
 
-class Twy_REST(object)
+class Twy_REST(object):
     '''If run on remote, completes action via Twython and prints output. /
         Otherwise, if run locally, only prints to terminal.'''
 

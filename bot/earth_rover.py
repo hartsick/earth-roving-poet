@@ -48,7 +48,6 @@ class EarthRover(object):
 
     @classmethod
     def get_status_url(cls, status):
-        print "URLS", status
         url = "http://twitter.com/{0}/status/{1}".format(cls.username, status['id_str'])
         if config.DEBUG:
             print url

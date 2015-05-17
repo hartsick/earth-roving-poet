@@ -91,7 +91,7 @@ class ImageToText(object):
     def log_interesting_data(self):
         print "Gathering data..."
         print "Nearest Neighbor:"
-        print self.nearest_neighbour()
+        print self.nearest_neighbor()
         print "Top caption:"
         print self.top_caption()
         print "Captions:"
@@ -104,7 +104,7 @@ if __name__ == '__main__':
     test_img = 'https://s-media-cache-ak0.pinimg.com/236x/87/14/cb/8714cbbe006f5117a0cab2d42e65ec61.jpg'
 
     resp = ImageToText(test_img)
-    resp.nearest_neighbour()
+    resp.nearest_neighbor()
     resp.captions()
     resp.top_caption()
     resp.tags()

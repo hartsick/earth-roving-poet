@@ -64,7 +64,7 @@ class ImageToText(object):
                 # remove weird period at end
                 formatted_captions = []
                 for c in captions:
-                    cleaned = c.split('.')[0].strip()
+                    cleaned = c.text.split('.')[0].strip()
                     formatted_captions.append(cleaned)
                 return formatted_captions
         print("no captions found?")

@@ -73,9 +73,16 @@ class ImageToText(object):
     def top_caption(self):
         all_captions = self.captions()
         if config.DEBUG:
-            print(all_captions)
+            print(all_captions[0])
         if all_captions:
             return all_captions[0]
+
+    def last_caption(self):
+        all_captions = self.captions()
+        if config.DEBUG:
+            print(all_captions[-1])
+        if all_captions:
+            return all_captions[-1]
 
     def tags(self):
         header = self.soup.find('h4', text=re.compile(r'TAGS'))
@@ -95,7 +102,6 @@ class ImageToText(object):
     def log_interesting_data(self):
         print "Gathering data..."
         print 'Nearest Neighbor: "{0}"'.format(self.nearest_neighbor())
-        print 'Top Caption: "{0}"'.format(self.top_caption())
         print "Captions: {0}: ".format(self.captions())
         print "Tags: {0}".format(self.tags())
 

@@ -29,7 +29,7 @@ class UserStreamer(TwythonStreamer):
 
         img_url = EarthRover.get_media_url(target)
         resp = ImageToText(img_url)
-        text = resp.top_caption()
+        text = resp.last_caption()
         text += " " + EarthRover.get_status_url(target)
 
         resp.log_interesting_data()

@@ -12,8 +12,7 @@ class UserStreamer(TwythonStreamer):
 
         if data.get('event'):
             if self.is_earthrover_fave(data):
-                print "is earthrover fave!"
-                print data
+                print "Received earthrover fave!"
                 self.on_fave(data)
         else:
             print "other"
@@ -29,8 +28,11 @@ class UserStreamer(TwythonStreamer):
         target = status['target_object']
 
         img_url = EarthRover.get_media_url(target)
-        text = ImageToText(img_url).top_caption()
+        resp = ImageToText(img_url)
+        text = resp.top_caption()
         text += " " + EarthRover.get_status_url(target)
+
+        resp.log_interesting_data()
 
         if config.DEBUG:
             print "LOCAL: Updated status with: '{0}'".format(text)

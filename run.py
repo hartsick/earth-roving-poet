@@ -1,25 +1,25 @@
 from time import sleep
-from twython import Twython
+from datetime import datetime
 import config
 from twitter.stream import UserStreamer
 
 def do_the_thing():
     while True:
-        try:
-            stream = UserStreamer(*config.christa_cred)
-            stream.user(**{'with': 'user'})
-        except Exception as e:
-            print(e)
-            sleep(60)
+        # Only run stream between 7am - 1am PST
+        if datetime.now().time().hour < 1 or datetime.now().time().hour > 7:
+            try:
+                stream = UserStreamer(*config.christa_cred)
+                stream.user(**{'with': 'user'})
+            except Exception as e:
+                print(e)
+                sleep(60)
+        else:
+            return
 
 if __name__ == "__main__":
     '''
-        Because of Heroku's new limits for free dynos, the script will be auto-powered
-        down for at least 6 hours per day. As such, I need to schedule the script
-        to be run once per day, preferably at the start of my normal day (~7-8am PST)
-        since it'll be listening for me tweeting. Since it's not a complicated schedule
-        and I really don't care how accurate it is, I'm just using the free Heroku
-        scheduler add-on. TMI maybe, but there you go.
+        Because of Heroku's new limits for free dynos, process should be scheduled
+        to start ~6-7am PST every day, and will shut itself down at night.
     '''
 
     do_the_thing()

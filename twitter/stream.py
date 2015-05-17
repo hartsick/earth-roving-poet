@@ -15,10 +15,6 @@ class UserStreamer(TwythonStreamer):
                 print "is earthrover fave!"
                 print data
                 self.on_fave(data)
-            elif self.is_follow(data):
-                print "is follow!"
-                print data
-                self.on_follow(data)
         else:
             print "other"
 

@@ -1,4 +1,4 @@
-fave = {u'created_at': u'Sat May 16 22:04:28 +0000 2015',
+sample_fave = {u'created_at': u'Sat May 16 22:04:28 +0000 2015',
  u'event': u'favorite',
  u'source': {u'contributors_enabled': False,
              u'created_at': u'Sat Mar 14 17:20:57 +0000 2009',

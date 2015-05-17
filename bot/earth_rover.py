@@ -1,4 +1,4 @@
-from fixtures.sample_tweets import sample_tweets
+from fixtures.tweets import sample_tweets
 from twython import Twython
 import config
 

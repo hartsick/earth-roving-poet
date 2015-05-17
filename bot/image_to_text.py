@@ -7,10 +7,9 @@ import requests
 import bs4
 import re
 import config
+from fixtures.img_response import sample_img_response
 
-# TODO: Right now when debug is turned on and this file is run, the class still makes requests to the image-to-text server. Ideally, we'd like to test against a sample response instead, but the OOP refactor makes this difficult with only one debug setting.
-
-# TODO, part 2: Clean up this debugging and error handling logic
+# TODO: Clean up this debugging and error handling logic
 
 class ImageToText(object):
     def __init__(self, image_url):
@@ -28,20 +27,22 @@ class ImageToText(object):
             'X-Requested-With': 'XMLHttpRequest',
             'User-agent': "@earthrovingpoet v. 1.0"
         }
-        try:
-            r = requests.post(base_url, files=files, headers=headers, timeout=5*60)
-        except requests.exceptions.ReadTimeout as err:
-            print("read time out")
-            return
-        text = r.text.strip()
         if config.DEBUG:
+            text = sample_img_response
+        else:
+            try:
+                r = requests.post(base_url, files=files, headers=headers, timeout=5*60)
+            except requests.exceptions.ReadTimeout as err:
+                print("read time out")
+                return
+            text = r.text.strip()
             print(r)
         if not len(text):
             print('no text in response. status: %d %s' % (r.status_code, r.reason))
             return None
         return text
 
-    def nearest_neighbour(self):
+    def nearest_neighbor(self):
         try:
             return self.soup.li.get_text()
         except AttributeError as err:

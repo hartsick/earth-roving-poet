@@ -14,8 +14,8 @@ christa_cred = [
     os.environ.get('CHRISTA_ACCESS_TOKEN_SECRET')
 ]
 
-CHRISTA_ID = 24398192
-
 BOT_ID = 3196974433
+CHRISTA_ID = 24398192
+ROVER_ID = 2714673572
 
 DEBUG = os.environ.get('TWEET_LOCAL', None)

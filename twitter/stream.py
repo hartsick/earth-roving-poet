@@ -27,10 +27,7 @@ class UserStreamer(TwythonStreamer):
 
 
     def is_earthrover_fave(self, status):
-        return status['event'] == 'favorite' and status['source']['id'] == config.CHRISTA_ID
-
-    def is_follow(self, data):
-        return data['event'] == 'follow'
+        return status['event'] == 'favorite' and status['source']['id'] == config.CHRISTA_ID and status['target']['id'] == config.ROVER_ID
 
     def on_fave(self, status):
         target = status['target_object']
@@ -47,6 +44,3 @@ class UserStreamer(TwythonStreamer):
                 print "REMOTE: Updated status with: '{0}'".format(text)
             except Exception as e:
                 print(e)
-
-    def on_follow(self, follow):
-        Twy_REST().follow_back(follow)

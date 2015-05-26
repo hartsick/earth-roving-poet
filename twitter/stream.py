@@ -30,15 +30,18 @@ class UserStreamer(TwythonStreamer):
         img_url = EarthRover.get_media_url(target)
         resp = ImageToText(img_url)
         text = resp.last_caption()
-        text += " " + EarthRover.get_status_url(target)
+        if text:
+            text += " " + EarthRover.get_status_url(target)
 
-        resp.log_interesting_data()
+            resp.log_interesting_data()
 
-        if config.DEBUG:
-            print "LOCAL: Updated status with: '{0}'".format(text)
+            if config.DEBUG:
+                print "LOCAL: Updated status with: '{0}'".format(text)
+            else:
+                try:
+                    Twy_REST().update_status({'status': text})
+                    print "REMOTE: Updated status with: '{0}'".format(text)
+                except Exception as e:
+                    print(e)
         else:
-            try:
-                Twy_REST().update_status({'status': text})
-                print "REMOTE: Updated status with: '{0}'".format(text)
-            except Exception as e:
-                print(e)
+            print "no caption for image"
